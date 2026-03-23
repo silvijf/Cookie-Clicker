@@ -1,0 +1,611 @@
+<link rel="icon" type="image/webp" href="Cookie.webp">
+
+<html>
+    <body>
+        <title>Cookie Clicker</title>
+        <button class="cookie" onclick="clicked()"><img src="Cookie.webp" alt="Cookie.webp" id="cookie"></button>
+
+        <p id="cookies">0</p>
+        <p id="outputCps">0 cps</p>
+
+        <fieldset>
+            <legend>Shop</legend>
+        <input type="button" value="Buy a cursor for 150 cookies." id="cursorButton" onclick="buyCursor()">
+        <input type="button" value="Sell a cursor for 100 cookies." id="sellCursor" class="sell" onclick="sellCursor()">
+        <input type="button" value="0" id="amountCursor"><br>
+        
+        <input type="button" value="Buy a granny for 1000 cookies." id="omaButton" onclick="buyOma()">
+        <input type="button" value="Sell a granny for 750 cookies." id="sellOma" class="sell" onclick="sellOma()">
+        <input type="button" value="0" id="amountOma"><br>
+        
+        <input type="button" value="Buy a farm for 11.000 cookies." id="farmButton" onclick="buyFarm()">
+        <input type="button" value="Sell a farm for 10.000 cookies." id="sellFarm" class="sell" onclick="sellFarm()">
+        <input type="button" value="0" id="amountFarm"><br>
+        
+        <input type="button" value="Buy a mine for 120.000 cookies." id="mineButton" onclick="buyMine()">
+        <input type="button" value="Verkoop een mijn voor 100.000 cookies." id="sellMine" class="sell" onclick="sellMine()">
+        <input type="button" value="0" id="amountMine"><br>
+        
+        <input type="button" value="Buy a factory for 1.300.000 cookies." id="factoryButton" onclick="buyFactory()">
+        <input type="button" value="Sell a factory for 1.000.000 cookies." id="sellFactory" class="sell" onclick="sellFactory()">
+        <input type="button" value="0" id="amountFactory"><br>
+
+        <input type="button" value="Buy a bank for 14.000.000 cookies." id="bankButton" onclick="buyBank()">
+        <input type="button" value="Sell a bank for 10.000.000 cookies." id="sellBank" class="sell" onclick="sellBank()">
+        <input type="button" value="0" id="amountBank"><br>
+
+        <input type="button" value="Buy a temple for 200.000.000 cookies." id="templeButton" onclick="buyTemple()">
+        <input type="button" value="Sell a temple for 175.000.000 cookies." id="sellTemple" class="sell" onclick="sellTemple()">
+        <input type="button" value="0" id="amountTemple"><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Auto-save</legend>
+            <link rel="stylesheet" href="-Cookie Clicker.css">
+            <input type="range" id="tempB" min="0" value="0" max="1" name="temp" list="values"/>
+
+            <datalist id="values">
+            <option value="0" label="Disabled"></option>
+            <option value="1" label="Enabled"></option>
+            </datalist>
+            <!-- <input type="range" id="autosave" min="0" max="1" value="0" list="values" onchange="updateAutosave()">
+            <p id="autosaveOutput">Disabled</p> -->
+            <!-- <datalist id="values">
+                <option value="0" label="Enabled"></option>
+                <option value="1" label="Disabled"></option>
+            </datalist> -->
+        </fieldset>
+
+        <br><input type="button" value="Save your progress." id="saveButton" onclick="save()"><br>
+        <input type="button" value="Load your progress." id="loadButton" onclick="load()"><br>
+        <input type="button" value="Remove ALL your progress." onclick="reset()"><br>
+        <a href="-Cookie Clicker manual.html" target="_blank"><button class="information">Click here for more information.</button></a>
+    </body>
+
+    <style>
+        .cannotBuy {
+            cursor: not-allowed;
+        }
+
+        .canBuy {
+            cursor: default;
+        }
+
+        .information {
+            cursor: help;
+        }
+
+        .cookie {
+            background-color: rgba(255, 255, 255, 255);
+            border: none;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .normal {
+            cursor: default;
+        }
+
+        .progress {
+            cursor: progress;
+        }
+
+        .green {
+            background-color: rgb(0, 255, 0);
+        }
+        
+        .sell {
+            background-color: rgb(255, 0, 0);
+        }
+
+        .canSell {
+            background-color: rgb(255, 0, 0);
+            cursor: pointer;
+        }
+
+        .cannotSell {
+            background-color: rgb(255, 0, 0);
+            cursor: not-allowed;
+        }
+    </style>
+</html>
+
+<script>
+    const cookie = document.getElementById('cookie')
+    const cookies = document.getElementById('cookies')
+    const cpsShow = document.getElementById('outputCps')
+    const saveButton = document.getElementById('saveButton')
+    const loadButton = document.getElementById('loadButton')
+    const autosaveInput = document.getElementById('tempB')
+    // const autosaveOutput = document.getElementById('autosaveOutput')
+
+    const cursorButton = document.getElementById('cursorButton')
+    const omaButton = document.getElementById('omaButton')
+    const farmButton = document.getElementById('farmButton')
+    const mineButton = document.getElementById('mineButton')
+    const factoryButton = document.getElementById('factoryButton')
+    const bankButton = document.getElementById('bankButton')
+    const templeButton = document.getElementById('templeButton')
+
+    const sellCursorButton = document.getElementById('sellCursor')
+    const sellOmaButton = document.getElementById('sellOma')
+    const sellFarmButton = document.getElementById('sellFarm')
+    const sellMineButton = document.getElementById('sellMine')
+    const sellFactoryButton = document.getElementById('sellFactory')
+    const sellBankButton = document.getElementById('sellBank')
+    const sellTempleButton = document.getElementById('sellTemple')
+
+    const amountCursor = document.getElementById('amountCursor')
+    const amountOma = document.getElementById('amountOma')
+    const amountFarm = document.getElementById('amountFarm')
+    const amountMine = document.getElementById('amountMine')
+    const amountFactory = document.getElementById('amountFactory')
+    const amountBank = document.getElementById('amountBank')
+    const amountTemple = document.getElementById('amountTemple')
+
+    let clicks = 0
+    let cps = 0
+    let cursor = 0
+    let oma = 0
+    let farm = 0
+    let mine = 0
+    let factory = 0
+    let bank = 0
+    let temple = 0
+
+    function makeCps() {
+        clicks += cps
+        cookies.textContent = clicks
+    }
+
+    setInterval(makeCps, 1000)
+
+    function clicked() {
+        clicks += 10
+        cookies.textContent = clicks
+        //cookie.width = 450
+        //setTimeout(normalSize, 100)
+    }
+
+    //function normalSize() {
+    //    cookie.width = 512
+    //}
+
+    function buyCursor() {
+        if (clicks >= 150) {
+            cps += 1
+            clicks -= 150
+            cursor += 1
+            amountCursor.value = cursor
+            cookies.textContent = clicks
+            cpsShow.textContent = (cps + " kps")
+
+            console.log("Cursor bought for 150 cookies.");
+        } else {
+            let cookiesToGo = 150 - clicks
+            console.warn("Not enough cookies to buy. A cursor costs 150 cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " cookies to buy a cursor.")
+            //alert("Not enough cookies to buy. A cursor costs 150 cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " cookies to buy a cursor.")
+        }
+    }
+
+    function sellCursor() {
+        if (cursor >= 1) {
+            cps -= 1
+            clicks += 100
+            cursor -= 1
+            amountCursor.value = cursor
+            cookies.textContent = clicks
+            cpsShow.textContent = (cps + " kps")
+            console.log("Cursor sold for 100 cookies.");
+        }
+    }
+
+    function buyOma() {
+        if (clicks >= 1000) {
+            cps += 10
+            clicks -= 1000
+            oma += 1
+            amountOma.value = oma
+            cookies.textContent = clicks
+            cpsShow.textContent = (cps + " kps")
+            console.log("Granny bought for 1000 cookies.");
+        } else {
+            let cookiesToGo = 1000 - clicks
+            console.warn("Not enough cookies to buy. An 'oma' costs 1000 cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " cookies to buy an 'oma'.")
+            //alert("Not enough cookies to buy. An 'oma' costs 1000 cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " cookies to buy an 'oma'.")
+        }
+    }
+
+    function sellOma() {
+        if (oma >= 1) {
+            cps -= 10
+            clicks += 750
+            oma -= 1
+            amountOma.value = oma
+            cookies.textContent = clicks
+            cpsShow.textContent = (cps + " kps")
+            console.log("Granny sold for 750 cookies.");
+        }
+    }
+
+    function buyFarm() {
+        if (clicks >= 11000) {
+            cps += 80
+            clicks -= 11000
+            farm += 1
+            amountFarm.value = farm
+            cookies.textContent = clicks
+            cpsShow.textContent = (cps + " kps")
+            console.log("Farm bought for 11.000 cookies.");          
+        } else {
+            let cookiesToGo = 11000 - clicks
+            console.warn("Not enough cookies to buy. A farm costs 11.000 cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " cookies to buy a farm.")
+            //alert("Not enough cookies to buy. A farm costs 11.000 cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " cookies to buy a farm.")
+        }
+    }
+
+    function sellFarm() {
+        if (farm >= 1) {
+            cps -= 80
+            clicks += 8500
+            farm -= 1
+            amountFarm.value = farm
+            cookies.textContent = clicks
+            cpsShow.textContent = (cps + " kps")
+            console.log("Farm sold for 10.000 cookies.");
+        }
+    }
+
+    function buyMine() {
+        if (clicks >= 120000) {
+            cps += 470
+            clicks -= 120000
+            mine += 1
+            amountMine.value = mine
+            cookies.textContent = clicks
+            cpsShow.textContent = (cps + " kps")
+            console.log("Mine bought for 120.000 cookies.");
+        } else {
+            let cookiesToGo = 120000 - clicks
+            console.warn("Not enough cookies to buy. A mine costs 120.000 cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " cookies to buy a mine.")
+            //alert("Not enough cookies to buy. A mine costs 120.000 cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " cookies to buy a mine.")
+        }
+    }
+
+    function sellMine() {
+        if (mine >= 1) {
+            cps -= 470
+            clicks += 100000
+            mine -= 1
+            amountMine.value = mine
+            cookies.textContent = clicks
+            cpsShow.textContent = (cps + " kps")
+            console.log("Mine sold 100.000 cookies.");
+        }
+    }
+
+    function buyFactory() {
+        if (clicks >= 1300000) {
+            cps += 2600
+            clicks -= 1300000
+            factory += 1
+            amountFactory.value = factory
+            cookies.textContent = clicks
+            cpsShow.textContent = (cps + " kps")
+            console.log("Factory bought for 1.300.000 cookies.");
+        } else {
+            let cookiesToGo = 1300000 - clicks
+            console.warn("Not enough cookies to buy. A factory costs 1.300.000 cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " cookies to buy a factory.")
+            //alert("Not enough cookies to buy. A factory costs 1.300.000 cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " cookies to buy a factory.")
+        }
+    }
+
+    function sellFactory() {
+        if (factory >= 1) {
+            cps -= 2600
+            clicks += 1000000
+            factory -= 1
+            amountFactory.value = factory
+            cookies.textContent = clicks
+            cpsShow.textContent = (cps + " kps")
+            console.log("Factory sold for 1.000.000 cookies.");
+        }
+    }
+
+    function buyBank() {
+        if (clicks >= 14000000) {
+            cps += 14000
+            clicks -= 14000000
+            bank += 1
+            amountBank.value = bank
+            cookies.textContent = clicks
+            cpsShow.textContent = (cps + " kps")
+            console.log("Bank bought for 14.000.000 cookies.");
+        } else {
+            let cookiesToGo = 14000000 - clicks
+            console.warn("Not enough cookies to buy. A bank costs 14.000.000 cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " cookies to buy a bank.")
+            //alert("Not enough cookies to buy. A bank costs 14.000.000 cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " cookies to buy a bank.")
+        }
+    }
+
+    function sellBank() {
+        if (bank >= 1) {
+            cps -= 14000
+            clicks += 10000000
+            bank -= 1
+            amountBank.value = bank
+            cookies.textContent = clicks
+            cpsShow.textContent = (cps + " kps")
+            console.log("Bank sold for 10.000.000 cookies.");
+        }
+    }
+
+    function buyTemple() {
+        if (clicks >= 200000000) {
+            cps += 78000
+            clicks -= 200000000
+            temple += 1
+            amountTemple.value = temple
+            cookies.textContent = clicks
+            cpsShow.textContent = (cps + " kps")
+            console.log("Temple bought voor 200.000.000 cookies.");
+        } else {
+            let cookiesToGo = 200000000 - clicks
+            console.warn("Not enough cookies to buy. A temple costs 200.000.000 cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " cookies to buy a temple.")
+            //alert("Not enough cookies to buy. A temple costs 200.000.000 cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " cookies to buy a temple.")
+        }
+    }
+
+    function sellTemple() {
+        if (temple >= 1) {
+            cps -= 78000
+            clicks += 175000000
+            temple -= 1
+            amountTemple.value = temple
+            cookies.textContent = clicks
+            cpsShow.textContent = (cps + " kps")
+            console.log("Temple sold for 17.500.000 cookies.");
+        }
+    }
+
+    function save() {
+        saveButton.className = "green";
+        localStorage.setItem('cookies', clicks);
+        localStorage.setItem('cps', cps);
+
+        localStorage.setItem('amountCursor', cursor);
+        localStorage.setItem('amountOma', oma);
+        localStorage.setItem('amountFarm', farm);
+        localStorage.setItem('amountMine', mine);
+        localStorage.setItem('amountFactory', factory);
+        localStorage.setItem('amountBank', bank);
+        localStorage.setItem('amountTemple', temple);
+        console.log("Progress saved succesfully.");
+        console.log("Saved cookies: " + localStorage.getItem("cookies"));
+        console.log("Saved cps: " + localStorage.getItem("cps"));
+        console.log("Saved amount of cursors: " + localStorage.getItem("amountCursor"));
+        console.log("Saved amount of grannies: " + localStorage.getItem("amountOma"));
+        console.log("Saved amount of farms: " + localStorage.getItem("amountFarm"));
+        console.log("Saved amount of mines: " + localStorage.getItem("amountMine"));
+        console.log("Saved amount of factories: " + localStorage.getItem("amountFactory"));
+        console.log("Saved amount of banks: " + localStorage.getItem("amountBank"));
+        console.log("Saved amount of temples: " + localStorage.getItem("amountTemple"));
+        setTimeout(normalbutton, 2500);
+    }
+
+    function normalbutton() {
+        saveButton.className = "normal";
+        loadButton.className = "normal";
+    }
+
+    function autoSave() {
+        let autosave = autosaveInput.value;
+        if (autosave == 1) {
+            localStorage.setItem('cookies', clicks);
+            localStorage.setItem('cps', cps);
+
+            localStorage.setItem('amountCursor', cursor);
+            localStorage.setItem('amountOma', oma);
+            localStorage.setItem('amountFarm', farm);
+            localStorage.setItem('amountMine', mine);
+            localStorage.setItem('amountFactory', factory);
+            localStorage.setItem('amountBank', bank);
+            localStorage.setItem('amountTemple', temple);
+            console.log("Progress succesfully autosaved.");
+            /*
+            console.log("Saved cookies: " + localStorage.getItem("cookies"));
+            console.log("Saved cps: " + localStorage.getItem("cps"));
+            console.log("Saved amount of cursors: " + localStorage.getItem("amountCursor"));
+            console.log("Saved amount of grannies: " + localStorage.getItem("amountOma"));
+            console.log("Saved amount of farms: " + localStorage.getItem("amountFarm"));
+            console.log("Saved amount of mines: " + localStorage.getItem("amountMine"));
+            console.log("Saved amount of factories: " + localStorage.getItem("amountFactory"));
+            console.log("Saved amount of banks: " + localStorage.getItem("amountBank"));
+            console.log("Saved amount of temples: " + localStorage.getItem("amountTemple"));
+            console.warn("END OF AUTOSAVE INFORMATION")
+            */
+        }
+    }
+
+    setInterval(autoSave, 3000)
+
+    function load() {
+        loadButton.className = "green"
+        clicks = JSON.parse(localStorage.getItem('cookies'))
+        cps = JSON.parse(localStorage.getItem('cps'))
+        cookies.value = clicks
+        cpsShow.value = cps
+
+        cursor = JSON.parse(localStorage.getItem('amountCursor'))
+        oma = JSON.parse(localStorage.getItem('amountOma'))
+        farm = JSON.parse(localStorage.getItem('amountFarm'))
+        mine = JSON.parse(localStorage.getItem('amountMine'))
+        factory = JSON.parse(localStorage.getItem('amountFactory'))
+        bank = JSON.parse(localStorage.getItem('amountBank'))
+        temple = JSON.parse(localStorage.getItem('amountTemple'))
+
+        amountCursor.value = cursor
+        amountOma.value = oma
+        amountFarm.value = farm
+        amountMine.value = mine
+        amountFactory.value = factory
+        amountBank.value = bank
+        amountTemple.value = temple
+
+        console.log("Progress loaded succesfully.");
+        setTimeout(normalbutton, 2500)
+    }
+
+    function updateButtons() {
+        if (clicks >= 200000000) {
+            templeButton.className = "canBuy"
+            bankButton.className = "canBuy"
+            factoryButton.className = "canBuy"
+            mineButton.className = "canBuy"
+            farmButton.className = "canBuy"
+            omaButton.className = "canBuy"
+            cursorButton.className = "canBuy"
+        } else if (clicks >= 14000000) {
+            templeButton.className = "cannotBuy"
+            bankButton.className = "canBuy"
+            factoryButton.className = "canBuy"
+            mineButton.className = "canBuy"
+            farmButton.className = "canBuy"
+            omaButton.className = "canBuy"
+            cursorButton.className = "canBuy"
+        } else if (clicks >= 1300000) {
+            templeButton.className = "cannotBuy"
+            bankButton.className = "cannotBuy"
+            factoryButton.className = "canBuy"
+            mineButton.className = "canBuy"
+            farmButton.className = "canBuy"
+            omaButton.className = "canBuy"
+            cursorButton.className = "canBuy"
+        } else if (clicks >= 120000) {
+            templeButton.className = "cannotBuy"
+            bankButton.className = "cannotBuy"
+            factoryButton.className = "cannotBuy"
+            mineButton.className = "canBuy"
+            farmButton.className = "canBuy"
+            omaButton.className = "canBuy"
+            cursorButton.className = "canBuy"
+        } else if (clicks >= 11000) {
+            templeButton.className = "cannotBuy"
+            bankButton.className = "cannotBuy"
+            factoryButton.className = "cannotBuy"
+            mineButton.className = "cannotBuy"
+            farmButton.className = "canBuy"
+            omaButton.className = "canBuy"
+            cursorButton.className = "canBuy"
+        } else if (clicks >= 1000) {
+            templeButton.className = "cannotBuy"
+            bankButton.className = "cannotBuy"
+            factoryButton.className = "cannotBuy"
+            mineButton.className = "cannotBuy"
+            farmButton.className = "cannotBuy"
+            omaButton.className = "canBuy"
+            cursorButton.className = "canBuy"
+        } else if (clicks >= 150) {
+            templeButton.className = "cannotBuy"
+            factoryButton.className = "cannotBuy"
+            mineButton.className = "cannotBuy"
+            farmButton.className = "cannotBuy"
+            omaButton.className = "cannotBuy"
+            cursorButton.className = "canBuy"
+        } else {
+            templeButton.className = "cannotBuy"
+            bankButton.className = "cannotBuy"
+            factoryButton.className = "cannotBuy"
+            mineButton.className = "cannotBuy"
+            farmButton.className = "cannotBuy"
+            omaButton.className = "cannotBuy"
+            cursorButton.className = "cannotBuy"
+        }
+    }
+
+    setInterval(updateButtons, 100)
+
+    function updateSellButtons() {
+        if (cursor >= 1) {
+            sellCursorButton.className = "canSell"
+        } else {
+            sellCursorButton.className = "cannotSell"
+        }
+
+        if (oma >= 1) {
+            sellOmaButton.className = "canSell"
+        } else {
+            sellOmaButton.className = "cannotSell"
+        }
+
+        if (farm >= 1) {
+            sellFarmButton.className = "canSell"
+        } else {
+            sellFarmButton.className = "cannotSell"
+        }
+
+        if (mine >= 1) {
+            sellMineButton.className = "canSell"
+        } else {
+            sellMineButton.className = "cannotSell"
+        }
+
+        if (factory >= 1) {
+            sellFactoryButton.className = "canSell"
+        } else {
+            sellFactoryButton.className = "cannotSell"
+        }
+
+        if (bank >= 1) {
+            sellBankButton.className = "canSell"
+        } else {
+            sellBankButton.className = "cannotSell"
+        }
+
+        if (temple >= 1) {
+            sellTempleButton.className = "canSell"
+        } else {
+            sellTempleButton.className = "cannotSell"
+        }
+    
+    }
+
+    setInterval(updateSellButtons, 100)
+
+    /*
+    function updateAutosave() {
+        let autosave = autosaveInput.value
+        if (autosave == 0) {
+            autosaveOutput.textContent = "Disabled"
+        } else if (autosave == 1) {
+            autosaveOutput.textContent = "Enabled"
+        } else {
+            autosaveOutput.textContent = "Error"
+        }
+    }
+    */
+
+    function reset() {
+        if (confirm("Are you sure you want to delete ALL your progress?")) {
+            if (confirm("Whoa! Wait, are you really sure? You can't undo this.")) {
+                if (confirm("Are you really really really really really sure? This is your final warning! You really can't undo this!")) {
+                    localStorage.removeItem('cookies')
+                    localStorage.removeItem('cps')
+                    clicks = 0
+                    cps = 0
+                    cookies.textContent = 0
+                    cpsShow.textContent = 0
+                    alert("Don't say I didn't warn you!")
+                    alert("Progress successfull removed.")
+                } else {
+                   alert("That was close! You almost deleted your progress. Your progress has not been deleted.") 
+                }
+            } else {
+                alert("Wise choise! Your progress has not been deleted.")
+            }
+        } else {
+            alert("Wise choise! Your progress has not been deleted.")
+        }
+    }
+</script>

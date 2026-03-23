@@ -468,70 +468,13 @@
     }
 
     function updateButtons() {
-        if (clicks >= 200000000) {
-            templeButton.className = "canBuy"
-            bankButton.className = "canBuy"
-            factoryButton.className = "canBuy"
-            mineButton.className = "canBuy"
-            farmButton.className = "canBuy"
-            omaButton.className = "canBuy"
-            cursorButton.className = "canBuy"
-        } else if (clicks >= 14000000) {
-            templeButton.className = "cannotBuy"
-            bankButton.className = "canBuy"
-            factoryButton.className = "canBuy"
-            mineButton.className = "canBuy"
-            farmButton.className = "canBuy"
-            omaButton.className = "canBuy"
-            cursorButton.className = "canBuy"
-        } else if (clicks >= 1300000) {
-            templeButton.className = "cannotBuy"
-            bankButton.className = "cannotBuy"
-            factoryButton.className = "canBuy"
-            mineButton.className = "canBuy"
-            farmButton.className = "canBuy"
-            omaButton.className = "canBuy"
-            cursorButton.className = "canBuy"
-        } else if (clicks >= 120000) {
-            templeButton.className = "cannotBuy"
-            bankButton.className = "cannotBuy"
-            factoryButton.className = "cannotBuy"
-            mineButton.className = "canBuy"
-            farmButton.className = "canBuy"
-            omaButton.className = "canBuy"
-            cursorButton.className = "canBuy"
-        } else if (clicks >= 11000) {
-            templeButton.className = "cannotBuy"
-            bankButton.className = "cannotBuy"
-            factoryButton.className = "cannotBuy"
-            mineButton.className = "cannotBuy"
-            farmButton.className = "canBuy"
-            omaButton.className = "canBuy"
-            cursorButton.className = "canBuy"
-        } else if (clicks >= 1000) {
-            templeButton.className = "cannotBuy"
-            bankButton.className = "cannotBuy"
-            factoryButton.className = "cannotBuy"
-            mineButton.className = "cannotBuy"
-            farmButton.className = "cannotBuy"
-            omaButton.className = "canBuy"
-            cursorButton.className = "canBuy"
-        } else if (clicks >= 150) {
-            templeButton.className = "cannotBuy"
-            factoryButton.className = "cannotBuy"
-            mineButton.className = "cannotBuy"
-            farmButton.className = "cannotBuy"
-            omaButton.className = "cannotBuy"
-            cursorButton.className = "canBuy"
-        } else {
-            templeButton.className = "cannotBuy"
-            bankButton.className = "cannotBuy"
-            factoryButton.className = "cannotBuy"
-            mineButton.className = "cannotBuy"
-            farmButton.className = "cannotBuy"
-            omaButton.className = "cannotBuy"
-            cursorButton.className = "cannotBuy"
-        }
+        templeButton.className = (clicks >= 200000000) ? "canBuy" : "cannotBuy"
+        bankButton.className = (clicks >= 14000000) ? "canBuy" : "cannotBuy"
+        factoryButton.className = (clicks >= 1300000) ? "canBuy" : "cannotBuy"
+        mineButton.className = (clicks >= 120000) ? "canBuy" : "cannotBuy"
+        farmButton.className = (clicks >= 11000) ? "canBuy" : "cannotBuy"
+        omaButton.className = (clicks >= 1000) ? "canBuy" : "cannotBuy"
+        cursorButton.className = (clicks >= 150) ? "canBuy" : "cannotBuy"
     }
 
     setInterval(updateButtons, 100)

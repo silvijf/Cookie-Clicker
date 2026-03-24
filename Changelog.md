@@ -8,6 +8,12 @@ The changlog started on May 24th 2026.
 3. Update
 4. Big update
 5. Mayor Update
+1 and 2 should not change gameplay.
+
+## Price system and more (May 24th 2026): mayor update
+- Made the price system. The prices of items will rise if you buy one. The formula for the price is: base cost × 1.15<sup>Current amount of buildings</sup>. The selling price is always 25% of the current price rounded down.
+- Made "localStorage-setter" (function "createLocalVariables") for new players
+- Ten million is now written as "10000000". This is due to the new price system. If anyone knows how to solve, please send me a pull request.
 
 ## Some little changes(May 24th 2026): bug fixes
 - Shortened the check lists for the cursor in de function "updateButtons()"

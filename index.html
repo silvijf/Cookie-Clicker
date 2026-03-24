@@ -174,7 +174,7 @@
         <br><input type="button" value="Save your progress." id="saveButton" onclick="save()"><br>
         <input type="button" value="Load your progress." id="loadButton" onclick="load()"><br>
         <input type="button" value="Remove ALL your progress." onclick="reset()"><br>
-        <a href="-Cookie Clicker manual.html" target="_blank"><button class="information">Click here for more information.</button></a>
+        <a href="Cookie Clicker manual.html" target="_blank"><button class="information">Click here for more information.</button></a>
         <style>
             .cannotBuy {
                 cursor: not-allowed;
@@ -363,18 +363,18 @@
             //}
 
             function buyCursor() {
-                if (clicks >= (150 * Math.pow(1.15, cursor))) {
+                if (clicks >= Math.trunc(150 * Math.pow(1.15, cursor))) {
                     cps += 1
-                    clicks -= (150 * Math.pow(1.15, cursor))
+                    clicks -= Math.trunc(150 * Math.pow(1.15, cursor))
                     cursor += 1
                     amountCursor.value = cursor
                     cookies.textContent = clicks
                     cpsShow.textContent = (cps + " cps")
-                    cursorButton.value = "Buy a cursor for " + (150 * Math.pow(1.15, cursor)) + " cookies."
-                    console.log("Cursor bought for " + (150 * Math.pow(1.15, (cursor - 1))) + " cookies.");     // I know this is not the most efficient way to do this, I know that I can solve this by putting this rule above rule 355, but it's good enough. This is for the other functions as well.
+                    cursorButton.value = "Buy a cursor for " + Math.trunc(150 * Math.pow(1.15, cursor)) + " cookies."
+                    console.log("Cursor bought for " + Math.trunc(150 * Math.pow(1.15, (cursor - 1))) + " cookies.");     // I know this is not the most efficient way to do this, I know that I can solve this by putting this rule above rule 355, but it's good enough. This is for the other functions as well.
                 } else {
-                    let cookiesToGo = (150 * Math.pow(1.15, cursor)) - clicks
-                    console.warn("Not enough cookies to buy. A cursor costs " + (150 * Math.pow(1.15, cursor)) + " cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " more cookies to buy a cursor.")
+                    let cookiesToGo = Math.trunc(150 * Math.pow(1.15, cursor)) - clicks
+                    console.warn("Not enough cookies to buy. A cursor costs " + Math.trunc(150 * Math.pow(1.15, cursor)) + " cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " more cookies to buy a cursor.")
                 }
             }
         
@@ -392,18 +392,18 @@
             }
 
             function buyGranny() {
-                if (clicks >= (1000 * Math.pow(1.15, granny))) {
+                if (clicks >= Math.trunc(1000 * Math.pow(1.15, granny))) {
                     cps += 10
-                    clicks -= (1000 * Math.pow(1.15, granny))
+                    clicks -= Math.trunc(1000 * Math.pow(1.15, granny))
                     granny += 1
                     amountGranny.value = granny
                     cookies.textContent = clicks
                     cpsShow.textContent = (cps + " cps")
-                    grannyButton.value = "Buy a granny for " + (1000 * Math.pow(1.15, granny)) + " cookies."
-                    console.log("Granny bought for " + (1000 * Math.pow(1.15, (granny - 1))) + " cookies.");
+                    grannyButton.value = "Buy a granny for " + Math.trunc(1000 * Math.pow(1.15, granny)) + " cookies."
+                    console.log("Granny bought for " + Math.trunc(1000 * Math.pow(1.15, (granny - 1))) + " cookies.");
                 } else {
-                    let cookiesToGo = (1000 * Math.pow(1.15, granny)) - clicks
-                    console.warn("Not enough cookies to buy. A granny costs " + (1000 * Math.pow(1.15, granny)) + " cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " more cookies to buy a granny.")
+                    let cookiesToGo = Math.trunc(1000 * Math.pow(1.15, granny)) - clicks
+                    console.warn("Not enough cookies to buy. A granny costs " + Math.trunc(1000 * Math.pow(1.15, granny)) + " cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " more cookies to buy a granny.")
                 }
             }
 
@@ -421,18 +421,18 @@
             }
 
             function buyFarm() {
-                if (clicks >= (11000 * Math.pow(1.15, farm))) {
+                if (clicks >= Math.trunc(11000 * Math.pow(1.15, farm))) {
                     cps += 80
-                    clicks -= (11000 * Math.pow(1.15, farm))
+                    clicks -= Math.trunc(11000 * Math.pow(1.15, farm))
                     farm += 1
                     amountFarm.value = farm
                     cookies.textContent = clicks
                     cpsShow.textContent = (cps + " cps")
-                    farmButton.value = "Buy a farm for " + (11000 * Math.pow(1.15, farm)) + " cookies."
-                    console.log("Farm bought for " + (11000 * Math.pow(1.15, (farm - 1))) + " cookies.");          
+                    farmButton.value = "Buy a farm for " + Math.trunc(11000 * Math.pow(1.15, farm)) + " cookies."
+                    console.log("Farm bought for " + Math.trunc(11000 * Math.pow(1.15, (farm - 1))) + " cookies.");          
                 } else {
-                    let cookiesToGo = (11000 * Math.pow(1.15, farm)) - clicks
-                    console.warn("Not enough cookies to buy. A farm costs " + (11000 * Math.pow(1.15, farm)) + " cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " more cookies to buy a farm.")
+                    let cookiesToGo = Math.trunc(11000 * Math.pow(1.15, farm)) - clicks
+                    console.warn("Not enough cookies to buy. A farm costs " + Math.trunc(11000 * Math.pow(1.15, farm)) + " cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " more cookies to buy a farm.")
                 }
             }
 
@@ -450,18 +450,18 @@
             }
 
             function buyMine() {
-                if (clicks >= (120000 * Math.pow(1.15, mine))) {
+                if (clicks >= Math.trunc(120000 * Math.pow(1.15, mine))) {
                     cps += 470
-                    clicks -= (120000 * Math.pow(1.15, mine))
+                    clicks -= Math.trunc(120000 * Math.pow(1.15, mine))
                     mine += 1
                     amountMine.value = mine
                     cookies.textContent = clicks
                     cpsShow.textContent = (cps + " cps")
-                    mineButton.value = "Buy a mine for " + (120000 * Math.pow(1.15, mine)) + " cookies."
-                    console.log("Mine bought for " + (120000 * Math.pow(1.15, (mine - 1))) + " cookies.");
+                    mineButton.value = "Buy a mine for " + Math.trunc(120000 * Math.pow(1.15, mine)) + " cookies."
+                    console.log("Mine bought for " + Math.trunc(120000 * Math.pow(1.15, (mine - 1))) + " cookies.");
                 } else {
-                    let cookiesToGo = 120000 - (120000 * Math.pow(1.15, mine))
-                    console.warn("Not enough cookies to buy. A mine costs " + (120000 * Math.pow(1.15, mine)) + " cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " more cookies to buy a mine.")
+                    let cookiesToGo = 120000 - Math.trunc(120000 * Math.pow(1.15, mine))
+                    console.warn("Not enough cookies to buy. A mine costs " + Math.trunc(120000 * Math.pow(1.15, mine)) + " cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " more cookies to buy a mine.")
                 }
             }
 
@@ -479,18 +479,18 @@
             }
 
             function buyFactory() {
-                if (clicks >= (1300000 * Math.pow(1.15, factory))) {
+                if (clicks >= Math.trunc(1300000 * Math.pow(1.15, factory))) {
                     cps += 2600
-                    clicks -= (1300000 * Math.pow(1.15, factory))
+                    clicks -= Math.trunc(1300000 * Math.pow(1.15, factory))
                     factory += 1
                     amountFactory.value = factory
                     cookies.textContent = clicks
                     cpsShow.textContent = (cps + " cps")
-                    factoryButton.value = "Buy a factory for " + (1300000 * Math.pow(1.15, factory)) + " cookies."
-                    console.log("Factory bought for " + (1300000 * Math.pow(1.15, (factory - 1))) + " cookies.");
+                    factoryButton.value = "Buy a factory for " + Math.trunc(1300000 * Math.pow(1.15, factory)) + " cookies."
+                    console.log("Factory bought for " + Math.trunc(1300000 * Math.pow(1.15, (factory - 1))) + " cookies.");
                 } else {
-                    let cookiesToGo = (1300000 * Math.pow(1.15, factory)) - clicks
-                    console.warn("Not enough cookies to buy. A factory costs " + (1300000 * Math.pow(1.15, factory)) + " cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " more cookies to buy a factory.")
+                    let cookiesToGo = Math.trunc(1300000 * Math.pow(1.15, factory)) - clicks
+                    console.warn("Not enough cookies to buy. A factory costs " + Math.trunc(1300000 * Math.pow(1.15, factory)) + " cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " more cookies to buy a factory.")
                 }
             }
 
@@ -508,18 +508,18 @@
             }
 
             function buyBank() {
-                if (clicks >= (14000000 * Math.pow(1.15, bank))) {
+                if (clicks >= Math.trunc(14000000 * Math.pow(1.15, bank))) {
                     cps += 14000
-                    clicks -= (14000000 * Math.pow(1.15, bank))
+                    clicks -= Math.trunc(14000000 * Math.pow(1.15, bank))
                     bank += 1
                     amountBank.value = bank
                     cookies.textContent = clicks
                     cpsShow.textContent = (cps + " cps")
-                    bankButton.value = "Buy a bank for " + (14000000 * Math.pow(1.15, bank)) + " cookies."
-                    console.log("Bank bought for " + (14000000 * Math.pow(1.15, (bank - 1))) + " cookies.");
+                    bankButton.value = "Buy a bank for " + Math.trunc(14000000 * Math.pow(1.15, bank)) + " cookies."
+                    console.log("Bank bought for " + Math.trunc(14000000 * Math.pow(1.15, (bank - 1))) + " cookies.");
                 } else {
-                    let cookiesToGo = (14000000 * Math.pow(1.15, bank)) - clicks
-                    console.warn("Not enough cookies to buy. A bank costs " + (14000000 * Math.pow(1.15, bank)) + " cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " more cookies to buy a bank.")
+                    let cookiesToGo = Math.trunc(14000000 * Math.pow(1.15, bank)) - clicks
+                    console.warn("Not enough cookies to buy. A bank costs " + Math.trunc(14000000 * Math.pow(1.15, bank)) + " cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " more cookies to buy a bank.")
                 }
             }
 
@@ -537,18 +537,18 @@
             }
 
             function buyTemple() {
-                if (clicks >= (200000000 * Math.pow(1.15, temple))) {
+                if (clicks >= Math.trunc(200000000 * Math.pow(1.15, temple))) {
                     cps += 78000
-                    clicks -= (200000000 * Math.pow(1.15, temple))
+                    clicks -= Math.trunc(200000000 * Math.pow(1.15, temple))
                     temple += 1
                     amountTemple.value = temple
                     cookies.textContent = clicks
                     cpsShow.textContent = (cps + " cps")
-                    templeButton.value = "Buy a temple for " + (200000000 * Math.pow(1.15, temple)) + " cookies."
-                    console.log("Temple bought for " + (200000000 * Math.pow(1.15, (temple - 1))) + " cookies.");
+                    templeButton.value = "Buy a temple for " + Math.trunc(200000000 * Math.pow(1.15, temple)) + " cookies."
+                    console.log("Temple bought for " + Math.trunc(200000000 * Math.pow(1.15, (temple - 1))) + " cookies.");
                 } else {
-                    let cookiesToGo = (200000000 * Math.pow(1.15, temple)) - clicks
-                    console.warn("Not enough cookies to buy. A temple costs " + (200000000 * Math.pow(1.15, temple)) + " cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " more cookies to buy a temple.")
+                    let cookiesToGo = Math.trunc(200000000 * Math.pow(1.15, temple)) - clicks
+                    console.warn("Not enough cookies to buy. A temple costs " + Math.trunc(200000000 * Math.pow(1.15, temple)) + " cookies, but you have " + clicks + " cookies and you need " + cookiesToGo + " more cookies to buy a temple.")
                 }
             }
 
@@ -566,18 +566,18 @@
             }
 
             function buyWTower() {
-                if (clicks >= (3300000000 * Math.pow(1.15, wTower))) {
+                if (clicks >= Math.trunc(3300000000 * Math.pow(1.15, wTower))) {
                     cps += 440000
-                    clicks -= (3300000000 * Math.pow(1.15, wTower))
+                    clicks -= Math.trunc(3300000000 * Math.pow(1.15, wTower))
                     wTower += 1
                     amountWTower.value = wTower
                     cookies.textContent = clicks
                     cpsShow.textContent = (cps + " cps")
-                    wTowerButton.value = "Buy a wizard tower for " + (3300000000 * Math.pow(1.15, wTower)) + " cookies."
-                    console.log("Wizard tower bought for " + (3300000000 * Math.pow(1.15, (wTower - 1))) + " cookies.");
+                    wTowerButton.value = "Buy a wizard tower for " + Math.trunc(3300000000 * Math.pow(1.15, wTower)) + " cookies."
+                    console.log("Wizard tower bought for " + Math.trunc(3300000000 * Math.pow(1.15, (wTower - 1))) + " cookies.");
                 } else {
-                    let cookiesToGo = (3300000000 * Math.pow(1.15, wTower)) - clicks
-                    console.warn("Not enough cookies to buy. A wizard tower costs " + (3300000000 * Math.pow(1.15, wTower)) + " cookies, but you have" + clicks + " cookies and you need " + cookiesToGo + " more cookies to buy a wizard tower.")
+                    let cookiesToGo = Math.trunc(3300000000 * Math.pow(1.15, wTower)) - clicks
+                    console.warn("Not enough cookies to buy. A wizard tower costs " + Math.trunc(3300000000 * Math.pow(1.15, wTower)) + " cookies, but you have" + clicks + " cookies and you need " + cookiesToGo + " more cookies to buy a wizard tower.")
                 }
             }
 

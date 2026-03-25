@@ -13,8 +13,11 @@ The changlog started on May 24th 2026.
 
 ### Still working on
 - Ten million is currently being written as "10000000", this should be "10,000,000".
-- Better manual
 - CPC, cookies per click.
+- Fix the link to the manual
+
+## Better manual (May 25th 2026): update
+- I added the better manual called "New Cookie Clicker manual.md". I left the old one version "Cookie Clicker manual.html" because I'm still trying to fix the link to the manual, but I have not been able to fix that yet. "Cookie Clicker manual.html" is outdated and not recommended to use. So until I fixed the link, use "New Cookie Clicker manual.md".
 
 ## CPS generation fixed (May 25th 2026): bug fixes
 - When loading progress, cps is not loaded. That has been fixed.

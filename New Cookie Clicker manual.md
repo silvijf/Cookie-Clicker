@@ -18,8 +18,6 @@ If autosave is enabled, the game saves every 3 seconds, but saving manually by h
 
 <ins>**ALWAYS FIRST LOAD PROGRESS BEFORE ENABLING AUTOSAVE**</ins>, otherwise, the autosave-function will save a blank progress, what means that you lost all your progess, and then, you progress can't be recovered.
 
-You should <ins>**ALWAYS**</ins> load when you join the game, even when you play for the first time, otherwise, **NO** cps will be generated.
-
 Buildings will get more expensive if you buy one. The formula to calculate the price of a building is the following:
 > Base cost × 1.15<sup>Current amount of buildings</sup>
 

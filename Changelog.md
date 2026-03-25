@@ -20,10 +20,10 @@ The changlog started on May 24th 2026.
 ## Round down system fixed (May 24th 2026): bug fixes
 - Fixed the round down system (the previous "fix" didn't work)
 - The selling values were not updating if a player bought an item and the prices were not updating if a player sold an item. This is fixed in this update.
-- ~~Fixed link to Cookie Clicker Manual.~~ Did **not** work.
+- ~~Fixed link to Cookie Clicker Manual.~~ Did <ins>**not**</ins> work.
 
 ## Round down system fixed (May 24th 2026): bug fixes
-- ~~Fixed the round down system (it came with the New price system update) by replacing Math.floor by Math.trunc~~ Did **not** work.
+- ~~Fixed the round down system (it came with the New price system update) by replacing Math.floor by Math.trunc~~ Did <ins>**not**</ins> work.
 
 ## New price system and more (May 24th 2026): mayor update
 - Made the price system. The prices of items will rise if you buy one. The formula for the price is: base cost × 1.15<sup>Current amount of buildings</sup>. The selling price is always 25% of the current price rounded down.

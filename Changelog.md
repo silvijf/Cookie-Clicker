@@ -16,6 +16,9 @@ The changlog started on May 24th 2026.
 - CPC, cookies per click.
 - Fix the link to the manual
 
+## No manual load required (May 25th 2026): small change
+- The player had to press the load button every time he joined, that is not needed anymore.
+
 ## Fixed remove progress function (May 25th 2026): bug fixes
 - When progress was removed, only the cps and the cookies were removed, after this update, all buildings are removed too.
 

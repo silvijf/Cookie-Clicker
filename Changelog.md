@@ -15,6 +15,7 @@ The changlog started on May 24th 2026.
 - When progress is loaded, the prices on the buttons are not updating.
 - Ten million is currently being written as "10000000", this should be "10,000,000".
 - Better manual
+- CPC, cookies per click.
 
 ## CPS generation fixed (May 25th 2026): bug fixes
 - When loading progress, cps is not loaded. That has been fixed.

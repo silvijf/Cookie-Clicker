@@ -10,6 +10,9 @@ The changlog started on May 24th 2026.
 5. Mayor Update
 1 and 2 should not change gameplay.
 
+## Some little fixes (May 25th 2026): bug fixes
+- When progress was loaded, decimal numbers could appear in the buy buttons. This is now fixed.
+
 ## Round down system fixed (May 24th 2026): bug fixes
 - Fixed the round down system (the previous "fix" didn't work)
 - The selling values were not updating if a player bought an item and the prices were not updating if a player sold an item. This is fixed in this update.

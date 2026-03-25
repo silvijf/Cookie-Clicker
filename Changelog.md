@@ -8,6 +8,7 @@ The changlog started on May 24th 2026.
 3. Update
 4. Big update
 5. Mayor Update
+
 1 and 2 should not change gameplay.
 
 ### Still working on

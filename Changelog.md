@@ -12,6 +12,7 @@ The changlog started on May 24th 2026.
 
 ### Still working on
 - When progress is loaded, the prices on the buttons are not updating.
+- Ten million is currently being written as "10000000", this should be "10,000,000".
 
 ## Some little fixes (May 25th 2026): bug fixes
 - When progress was loaded, decimal numbers could appear in the buy buttons. This is now fixed.

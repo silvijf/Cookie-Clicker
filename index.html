@@ -334,8 +334,6 @@
                 cookies.textContent = clicks
             }
 
-            setInterval(makeCps, 1000)
-
             function clicked() {
                 clicks += 10
                 cookies.textContent = clicks
@@ -707,6 +705,7 @@
                 sellWTowerButton.value = "Sell a wizard tower for " + Math.trunc((3300000000 * Math.pow(1.15, wTower)) / 4) + " cookies."
 
                 console.log("Progress loaded succesfully.");
+                setInterval(makeCps, 1000)
                 setTimeout(normalbutton, 2500)
             }
 

@@ -18,6 +18,7 @@ The changlog started on May 24th 2026.
 
 ## Fixed link to the manual (March 27th 2026): bug fixes
 - The in-game link to the manual has finally been fixed.
+- Updated CookieClickerManual.html
 
 ## Load cps cheat fixed (March 25th 2026): bug fixes
 - The player could greatly speed up the cps generation by hitting the load button multiple times, that has been removed in this update.

@@ -1,16 +1,22 @@
 # Cookie Clicker Manual
 
-## Cps generation for each building
-- A cursor increases your cps by 1.
-- A granny increases your cps by 10.
-- A farm increases your cps by 80.
-- A mine increases your cps by 470.
-- A factory increases your cps by 2600.
-- A bank increases your cps by 14,000.
-- A temple increases your cps by 78,000.
-- A wizard tower increases your cps by 440,000.
+## CpS generation for each building
+- A cursor increases your CpS by 1.
+- A granny increases your CpS by 10.
+- A farm increases your CpS by 80.
+- A mine increases your CpS by 470.
+- A factory increases your CpS by 2600.
+- A bank increases your CpS by 14,000.
+- A temple increases your CpS by 78,000.
+- A wizard tower increases your CpS by 440,000.
 
-Cps stands for "Cookies per second". This are the cookies you get every second without doing anything.
+## CpC generation for each upgrade
+- A wooden finger increases your CpC by 1.
+- An iron finger increase you CpC by 10.
+
+CpS stands for "Cookies per second". This are the cookies you get every second without doing anything.
+
+CpC stands for "Cookies per click". This are the cookies you get every time you click.
 
 Every time you click the cookie, you get 10 cookies.
 

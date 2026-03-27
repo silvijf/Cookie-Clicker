@@ -10,9 +10,7 @@ The changlog started on May 24th 2026.
 5. Mayor Update
 
 ### Still working on
-- Ten million is currently being written as "10000000", this should be "10,000,000".
 - CPC, cookies per click.
-- Fix the link to the manual
 
 ## English number notation (March 27<sup>th</sup> 2026): small change
 - Ten million was written as "10000000", new it's written as "10,000,000"

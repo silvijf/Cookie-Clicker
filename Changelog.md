@@ -14,6 +14,9 @@ The changlog started on May 24th 2026.
 - Nothing here anymore...
 - If you have any ideas, post them as an issue!
 
+## More fingers (April 2<sup>nd</sup> 2026): update
+- Added more fingers (silver, golden, steel, titanium and diamond)
+
 ## CpC update (March 27<sup>th</sup> 2026): big update
 - Added the CpC system
 - Fixed some English number notations inside the script

@@ -243,6 +243,14 @@
             </label>
         </fieldset>
 
+        <fieldset>
+            <legend>Show warning before leaving</legend>
+            <label class="switch" onclick="toggleShowWarning()">
+                <input type="checkbox" id="showWarningSwitch" checked>
+                <span class="slider round"></span>
+            </label>
+        </fieldset>
+
         <br><input type="button" value="Save your progress." id="saveButton" onclick="save()"><br>
         <input type="button" value="Load your progress." id="loadButton" onclick="load(manual=true)"><br>
         <input type="button" value="Remove ALL your progress." onclick="reset()"><br>
@@ -257,9 +265,8 @@
             const cpcShow = document.getElementById('outputCpc');
             const saveButton = document.getElementById('saveButton');
             const loadButton = document.getElementById('loadButton');
-            // const autosaveInput = document.getElementById('tempB');
             const autosaveSwitch = document.getElementById('autosaveSwitch');
-            // const autosaveOutput = document.getElementById('autosaveOutput')
+            const showWarningSwitch = document.getElementById('showWarningSwitch');
 
             const cursorButton = document.getElementById('cursorButton');
             const grannyButton = document.getElementById('grannyButton');
@@ -305,6 +312,7 @@
             const amountDiamondFinger = document.getElementById('amountDiamondFinger');
 
             let autosaveID;
+            let showWarning = true;
 
             let clicks = 0;
             let cps = 0;
@@ -338,6 +346,7 @@
                 let clicks = JSON.parse(localStorage.getItem('cookies'));
                 let cpc = JSON.parse(localStorage.getItem('cpc'));
                 let cps = JSON.parse(localStorage.getItem('cps'));
+                let showWarning= JSON.parse(localStorage.getItem('showWarning'))
                 let cursor = JSON.parse(localStorage.getItem('amountCursor'));
                 let granny = JSON.parse(localStorage.getItem('amountGranny'));
                 let farm = JSON.parse(localStorage.getItem('amountFarm'));
@@ -365,6 +374,10 @@
 
                 if (cps === null) {
                     localStorage.setItem('cps', 0)
+                }
+
+                if (showWarning === null) {
+                    localStorage.setItem('showWarning', true)
                 }
 
                 if (cursor === null) {
@@ -786,6 +799,7 @@
                 localStorage.setItem('cookies', clicks);
                 localStorage.setItem('cpc', cpc);
                 localStorage.setItem('cps', cps);
+                localStorage.setItem('showWarning', showWarning);
 
                 localStorage.setItem('amountCursor', cursor);
                 localStorage.setItem('amountGranny', granny);
@@ -837,6 +851,7 @@
                     localStorage.setItem('cookies', clicks);
                     localStorage.setItem('cpc', cpc);
                     localStorage.setItem('cps', cps);
+                    localStorage.setItem('showWarning', showWarning);
 
                     localStorage.setItem('amountCursor', cursor);
                     localStorage.setItem('amountGranny', granny);
@@ -869,6 +884,16 @@
                 }
             }
 
+            function toggleShowWarning() {
+                if (showWarningSwitch.checked) {
+                    showWarning = true
+                    localStorage.setItem('showWarning', false)
+                } else {
+                    showWarning = false
+                    localStorage.setItem('showWarning', false)
+                }
+            }
+
             function load(manual = false) {
                 if (manual) {
                     loadButton.className = "green"
@@ -882,6 +907,12 @@
                 cookies.textContent = toEnglishNumberNotation(clicks);
                 cpsShow.textContent = toEnglishNumberNotation(cps) + " CpS"
                 cpcShow.textContent = toEnglishNumberNotation(cpc) + " CpC"
+                showWarning = JSON.parse(localStorage.getItem('showWarning'));
+                if (showWarning) {
+                    showWarningSwitch.setAttribute("checked", "checked")
+                } else {
+                    showWarningSwitch.removeAttribute("checked")
+                }
 
                 cursor = JSON.parse(localStorage.getItem('amountCursor'));
                 granny = JSON.parse(localStorage.getItem('amountGranny'));
@@ -1095,7 +1126,10 @@
             setInterval(updateButtons, 100)
 
             function confirmClose(e) {
-                e.preventDefault();
+                localStorage.setItem("showWarning", showWarning);
+                if (showWarning) {
+                    e.preventDefault();
+                }
             }
 
             window.addEventListener('beforeunload', confirmClose);
